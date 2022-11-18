@@ -1,0 +1,119 @@
+@keyframes animation {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.container {
+  padding: 1rem 1.25rem;
+
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  background: var(--gray-500);
+
+  animation: animation 0.3s backwards;
+}
+
+.checkedButton,
+.unCheckedButton {
+  background: transparent;
+  border: 0;
+
+  flex: 1;
+
+  display: flex;
+  gap: 0.75rem;
+}
+
+.checkedButton {
+  opacity: 0.7;
+}
+
+.checkedButton .containerIcon,
+.unCheckedButton .containerIcon {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  margin-top: 0.125rem;
+}
+
+.checkedButton > p,
+.unCheckedButton > p {
+  font-size: var(--sm);
+  line-height: 140%;
+  text-align: left;
+}
+
+.unCheckedButton .containerIcon {
+  border: 2px solid var(--blue);
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.unCheckedButton .containerIcon:hover {
+  border-color: var(--blue-dark);
+  background: rgba(30, 111, 159, 0.4);
+}
+
+.unCheckedButton .containerIcon svg {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.unCheckedButton > p {
+  color: var(--gray-100);
+}
+
+.checkedButton .containerIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--purple);
+  padding: 0.1rem;
+  color: var(--gray-100);
+
+  transition: filter 0.2s ease;
+}
+
+.checkedButton .containerIcon:hover {
+  filter: brightness(1.1);
+}
+
+.checkedButton > p {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.deleteButton {
+  background: transparent;
+  border: 0;
+}
+
+.deleteButton svg {
+  color: var(--gray-300);
+}
+
+.deleteButton:hover svg {
+  color: var(--danger);
+}
+
+@media (min-width: 768px) {
+  .checkedButton .containerIcon,
+  .unCheckedButton .containerIcon {
+    margin-top: 0;
+  }
+}

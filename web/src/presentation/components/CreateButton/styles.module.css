@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 1rem;
+  border-radius: 8px;
+  border: 0;
+
+  background: var(--blue-dark);
+  color: var(--gray-100);
+
+  font-size: var(--xs);
+  font-weight: bold;
+
+  transiton: background-color 0.2s ease;
+}
+
+.root:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.root:not(:disabled):hover {
+  background: var(--blue);
+}
+
+@media (min-width: 768px) {
+  .root {
+    font-size: var(--sm);
+  }
+}

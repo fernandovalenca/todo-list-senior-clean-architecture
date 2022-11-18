@@ -1,0 +1,33 @@
+.input {
+  width: 100%;
+  border: 0;
+
+  padding: 0.8rem;
+  border-radius: 8px;
+
+  background: var(--gray-500);
+  font-size: var(--sm);
+  color: var(--gray-100);
+
+  outline: 1px solid transparent;
+  transition: outline-color 0.2s ease;
+
+  -webkit-box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.85);
+  -moz-box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.85);
+  box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.85);
+}
+
+.input:focus {
+  outline-color: var(--purple-dark);
+}
+
+.input::placeholder {
+  color: var(--gray-300);
+}
+
+@media (min-width: 768px) {
+  .input {
+    padding: 1rem;
+    font-size: var(--base);
+  }
+}
