@@ -38,4 +38,4 @@ O projeto foi desenvolvido com as seguintes tecnologias:
     $ npm run dev
 ```
 
-Desenvolvido por Thyago Ribeiro 👋
+Desenvolvido por Fernando Valença 🖤
