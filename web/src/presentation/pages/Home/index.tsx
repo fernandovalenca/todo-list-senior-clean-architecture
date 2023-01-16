@@ -4,6 +4,7 @@ import { useAppContext } from "@/presentation/context/AppContext";
 import { CreateButton, Input, Task } from "@/presentation/components";
 
 import styles from "./styles.module.css";
+import { TodoListComponent } from "@/presentation/components/TodoListComponent";
 
 export function Home() {
   const {
@@ -22,14 +23,6 @@ export function Home() {
     setDescription("");
   }
 
-  function updateItem(itemId: string) {
-    todoList.updateTodo(itemId);
-  }
-
-  function deleteItem(itemId: string) {
-    todoList.deleteTodo(itemId);
-  }
-
   const EmptyTodoListComponent = (
     <div className={styles.emptinessMessage}>
       <img src="/clipboard.svg" alt="clipboard" title="clipboard" />
@@ -38,19 +31,6 @@ export function Home() {
         itens a fazer
       </p>
     </div>
-  );
-
-  const TodoListComponent = (
-    <ul className={styles.list} role={"list"}>
-      {todoList.todos.map((item: any) => (
-        <Task
-          key={item.id}
-          data={item}
-          onDeleteTask={deleteItem}
-          onCheckedTask={updateItem}
-        />
-      ))}
-    </ul>
   );
 
   const descriptionIsEmpty = description.length === 0;
@@ -94,7 +74,7 @@ export function Home() {
           <div className={styles.listTasks}>
             {todoList.todos.length === 0
               ? EmptyTodoListComponent
-              : TodoListComponent}
+              : TodoListComponent({ todoList })}
           </div>
         </section>
       </div>

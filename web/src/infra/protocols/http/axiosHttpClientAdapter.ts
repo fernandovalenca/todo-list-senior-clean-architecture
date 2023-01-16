@@ -1,6 +1,12 @@
-import { HttpClient, HttpRequest, HttpResponse } from "@/data/protocols/http";
+import {
+  HttpClient,
+  HttpRequest,
+  HttpResponse,
+} from "@/application/protocols/http";
 
 import axios, { AxiosResponse } from "axios";
+
+const axiosInstance = axios.create({ baseURL: "base_url" });
 
 export class AxiosHttpClientAdapter implements HttpClient {
   async request(data: HttpRequest<any, any>): Promise<HttpResponse<any>> {

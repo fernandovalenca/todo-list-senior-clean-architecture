@@ -10,7 +10,6 @@ const { useCaseTodoList } = useCaseTodoListFactory();
 export function App() {
   return (
     <AppContextProvider useCaseTodoList={useCaseTodoList}>
-      <Header />
       <Home />
     </AppContextProvider>
   );

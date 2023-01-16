@@ -1,4 +1,4 @@
-import { RemoteTodoListUseCases } from "@/data/useCases/remoteTodoListUseCase";
+import { RemoteTodoListUseCases } from "@/application/useCases/remoteTodoListUseCase";
 import { axiosHttpClientAdapter } from "@/main/factories/protocols/http/axiosHttpClient";
 
 export const useCaseTodoListFactory = () => {

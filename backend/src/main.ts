@@ -58,4 +58,14 @@ app.delete("/todos/:id", function (req, res) {
   res.end();
 });
 
-app.listen(3000, () => console.log("listening on port 3000"));
+app.listen(3000, () => console.log(""));
+
+console.log("Início da aplicação");
+const avaliacao1 = 4;
+const avaliacao2 = 8;
+let avaliacaoOpcional;
+
+if (avaliacaoOpcional === undefined) {
+  avaliacaoOpcional = -1;
+}
+console.log(avaliacaoOpcional);

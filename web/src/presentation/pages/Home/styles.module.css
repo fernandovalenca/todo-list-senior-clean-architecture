@@ -80,12 +80,6 @@
   font-weight: 700;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
 @media (min-width: 768px) {
   .sectionAddNewTask form {
     flex-direction: row;

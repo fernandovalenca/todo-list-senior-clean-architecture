@@ -33,6 +33,7 @@ body {
 
 body {
   background: var(--gray-600);
+  color: var(--gray-100);
 }
 
 body::-webkit-scrollbar {

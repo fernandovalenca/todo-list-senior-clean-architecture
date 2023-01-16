@@ -1,6 +1,6 @@
 import { TodoList } from "@/domain/entities/TodoList";
 import { Observer } from "@/domain/entities/Observer";
-import { ITodoListUseCases } from "@/domain/useCases/todoListUseCases";
+import { ITodoListUseCases } from "@/domain/gateways/todoListUseCases";
 
 import { createContext, useContext, useEffect, useState } from "react";
 
