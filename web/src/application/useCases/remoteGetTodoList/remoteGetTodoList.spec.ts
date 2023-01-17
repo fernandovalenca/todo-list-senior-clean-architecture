@@ -17,7 +17,7 @@ const makeSut = (url = "@any_url"): SutTypes => {
 };
 
 describe("RemoteGetTodoList", () => {
-  test("Should call HttpClient with correct URL", async () => {
+  it("Should call HttpClient with correct URL", async () => {
     const url = "@other_url";
     const { sut, httpClientSpy } = makeSut(url);
 
@@ -25,7 +25,7 @@ describe("RemoteGetTodoList", () => {
 
     expect(httpClientSpy.url).toBe(url);
   });
-  test("Should call HttpClient with correct method", async () => {
+  it("Should call HttpClient with correct method", async () => {
     const url = "@other_url";
     const { sut, httpClientSpy } = makeSut(url);
 

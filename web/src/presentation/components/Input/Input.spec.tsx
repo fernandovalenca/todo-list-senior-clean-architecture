@@ -1,15 +1,22 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { Input } from ".";
+import { Input } from "@/presentation/components";
 
 describe("Input Component", () => {
-  it("should render correctly", () => {
-    render(<Input />);
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
+  it("should render correctly", async () => {
+    const { findByRole, getByRole } = render(<Input />);
+
+    await findByRole("textbox");
+
+    expect(getByRole("textbox")).toBeInTheDocument();
   });
 
-  it("should render valueless", () => {
-    render(<Input />);
-    expect(screen.getByRole("textbox")).toHaveValue("");
+  it("should render valueless", async () => {
+    const { findByRole, getByRole } = render(<Input />);
+
+    await findByRole("textbox");
+
+    expect(getByRole("textbox")).toHaveValue("");
   });
 });
+
