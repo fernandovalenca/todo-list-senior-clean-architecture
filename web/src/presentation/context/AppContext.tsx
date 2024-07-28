@@ -17,11 +17,11 @@ export type AppContextData = {
   state: StatePropsType;
 };
 
-export const INITIAL_CONTEXT = {
+export const INITIAL_CONTEXT: AppContextData = {
   state: {
     todoList: new TodoList(),
   },
-} as AppContextData;
+};
 
 const AppContext = createContext<AppContextData>(INITIAL_CONTEXT);
 
@@ -37,12 +37,15 @@ export const AppContextProvider = ({
 
       todos.register(
         new Observer("addTodo", async (todo: any) => {
-          await useCaseTodoList.addTodo(todo);
-
-          setContext((prevState) => ({
-            ...prevState,
-            todoList: todos,
-          }));
+          try {
+            setContext((prevState) => ({
+              ...prevState,
+              todoList: todos,
+            }));
+            await useCaseTodoList.addTodo(todo);
+          } catch (error) {
+            todos.deleteTodo(todo.id);
+          }
         })
       );
 
