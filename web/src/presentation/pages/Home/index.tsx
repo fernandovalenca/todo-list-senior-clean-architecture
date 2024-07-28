@@ -49,6 +49,7 @@ export function Home() {
         <section className={styles.sectionAddNewTask}>
           <form onSubmit={onSubmit} role={"form"}>
             <Input
+              data-testId="input-todo"
               placeholder="Adicione uma nova tarefa"
               value={description}
               onChange={onChangeInputDescription}
