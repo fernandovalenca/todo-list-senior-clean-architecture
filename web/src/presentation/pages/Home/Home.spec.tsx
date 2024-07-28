@@ -2,14 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, expect, it } from "vitest";
 import "@testing-library/jest-dom";
 import { Home } from ".";
-import { act } from "react-dom/test-utils";
-
-const sleep = (milliseconds = 600) =>
-  new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, milliseconds);
-  });
+import { act } from "react";
 
 describe("Home Page", () => {
   it("should render field to add task", () => {
