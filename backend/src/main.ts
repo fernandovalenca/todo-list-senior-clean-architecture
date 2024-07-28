@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+function sleep(ms = 1000): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 type ToDo = {
   id: string;
   description: string;
@@ -19,13 +23,13 @@ const todos: Array<ToDo> = [
   },
 ];
 
-app.get("/todos", function (req, res) {
+app.get("/todos", function (_, res) {
   console.log("GET");
 
   res.status(200).json({ todos });
 });
 
-app.post("/todos", function (req, res) {
+app.post("/todos", async function (req, res) {
   const todo = req.body;
 
   console.log("POST");
@@ -36,7 +40,7 @@ app.post("/todos", function (req, res) {
 });
 
 app.put("/todos/:id", function (req, res) {
-  const todo = todos.find((todo: any) => todo.id === req.params.id);
+  const todo = todos.find((todo: ToDo) => todo.id === req.params.id);
 
   console.log("PUT");
 
@@ -48,7 +52,7 @@ app.put("/todos/:id", function (req, res) {
 });
 
 app.delete("/todos/:id", function (req, res) {
-  const todo = todos.find((todo: any) => todo.id === req.params.id);
+  const todo = todos.find((todo: ToDo) => todo.id === req.params.id);
 
   console.log("DELETE");
 
@@ -58,14 +62,6 @@ app.delete("/todos/:id", function (req, res) {
   res.end();
 });
 
-app.listen(3000, () => console.log(""));
+const PORT = 3000;
 
-console.log("Início da aplicação");
-const avaliacao1 = 4;
-const avaliacao2 = 8;
-let avaliacaoOpcional;
-
-if (avaliacaoOpcional === undefined) {
-  avaliacaoOpcional = -1;
-}
-console.log(avaliacaoOpcional);
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
