@@ -21,9 +21,8 @@ export class TodoList extends Observable {
 
   async addTodo(description: string) {
     if (!description) return;
-    if (this.todos.filter((item: any) => !item.done).length > 4) return;
-    if (this.todos.some((item: any) => item.description === description))
-      return;
+    if (this.todos.filter((item) => !item.done).length > 4) return;
+    if (this.todos.some((item) => item.description === description)) return;
 
     const todo = new Todo(description);
 
@@ -33,7 +32,7 @@ export class TodoList extends Observable {
   }
 
   async deleteTodo(todoId: string) {
-    const todo = this.todos.find((todo: any) => todo.id === todoId);
+    const todo = this.todos.find((todo) => todo.id === todoId);
 
     if (!todo) return;
 
@@ -43,11 +42,11 @@ export class TodoList extends Observable {
   }
 
   async updateTodo(todoId: string) {
-    const todo = this.todos.find((todo: any) => todo.id === todoId);
+    const todo = this.todos.find((todo) => todo.id === todoId);
 
     if (!todo) return;
 
-    this.todos = this.todos.map((todo: any) =>
+    this.todos = this.todos.map((todo) =>
       todo.id === todoId ? { ...todo, done: !todo.done } : todo
     );
 
@@ -55,13 +54,11 @@ export class TodoList extends Observable {
   }
 
   async getTodoByDescription(description: string): Promise<any> {
-    return this.todos.find((todo: any) => todo.description === description);
+    return this.todos.find((todo) => todo.description === description);
   }
 
   async completed() {
-    const totalTasksCompleted = this.todos.filter(
-      (todo: any) => todo.done
-    ).length;
+    const totalTasksCompleted = this.todos.filter((todo) => todo.done).length;
     const messageCompleted =
       totalTasksCompleted > 0
         ? `${totalTasksCompleted} de ${this.todos.length}`
