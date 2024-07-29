@@ -1,20 +1,26 @@
 import { Trash, Check } from "phosphor-react";
-import { ITask } from "@/presentation/types/Task";
 import styles from "./styles.module.css";
+import { Todo } from "@/domain/entities/Todo";
+import { HTMLAttributes } from "react";
 
-interface TaskProps {
-  data: ITask;
+type TodoProps = {
+  data: Todo;
   onDeleteTask: (id: string) => void;
   onCheckedTask: (id: string) => void;
-}
+} & HTMLAttributes<HTMLLIElement>;
 
-export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
+export function Task({
+  data,
+  onCheckedTask,
+  onDeleteTask,
+  ...rest
+}: TodoProps) {
   function handleDeleteTask() {
-    onDeleteTask(data.id);
+    onDeleteTask(data.id!);
   }
 
   function handleCheckedTask() {
-    onCheckedTask(data.id);
+    onCheckedTask(data.id!);
   }
 
   const taskButtonClass = data.done
@@ -23,8 +29,9 @@ export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
   const taskButtonTitle = data.done ? "Desmarcar" : "Marcar";
 
   return (
-    <li className={styles.container}>
+    <li className={styles.container} {...rest}>
       <button
+        data-testId="todo-toggle-button"
         type="button"
         className={taskButtonClass}
         onClick={handleCheckedTask}
@@ -36,6 +43,7 @@ export function Task({ data, onCheckedTask, onDeleteTask }: TaskProps) {
         <p>{data.description}</p>
       </button>
       <button
+        data-testId="todo-delete-button"
         type="button"
         className={styles.deleteButton}
         onClick={handleDeleteTask}

@@ -49,7 +49,7 @@ export function Home() {
         <section className={styles.sectionAddNewTask}>
           <form onSubmit={onSubmit} role={"form"}>
             <Input
-              data-testId="input-todo"
+              data-testId="todo-input"
               placeholder="Adicione uma nova tarefa"
               value={description}
               onChange={onChangeInputDescription}
@@ -57,6 +57,7 @@ export function Home() {
               role={"textbox"}
             />
             <CreateButton
+              data-testId="todo-submit-button"
               type="submit"
               disabled={descriptionIsEmpty}
               role={"button"}
@@ -66,10 +67,14 @@ export function Home() {
         <section className={styles.sectionTasks}>
           <header>
             <strong className={styles.createdTasksLabel}>
-              Tarefas criadas <span>{todoList.todos.length}</span>
+              Tarefas criadas
+              <span data-testId="todos-registered">
+                {todoList.todos.length}
+              </span>
             </strong>
             <strong className={styles.completedTasksLabel}>
-              Concluídas <span>{messageCompleted}</span>
+              Concluídas
+              <span data-testId="todos-completed">{messageCompleted}</span>
             </strong>
           </header>
           <div className={styles.listTasks}>

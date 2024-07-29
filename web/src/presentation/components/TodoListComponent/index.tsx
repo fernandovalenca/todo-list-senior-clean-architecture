@@ -18,10 +18,11 @@ export const TodoListComponent = ({ todoList }: TodoListComponentProps) => {
 
   return (
     <ul className={styles.list} role={"list"}>
-      {todoList.todos.map((item: any) => (
+      {todoList.todos.map((todo) => (
         <Task
-          key={item.id}
-          data={item}
+          data-testId={todo.description}
+          key={todo.id}
+          data={todo}
           onDeleteTask={deleteItem}
           onCheckedTask={updateItem}
         />
